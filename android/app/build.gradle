@@ -83,10 +83,10 @@ android {
 
     namespace "io.bluewallet.bluewallet"
     defaultConfig {
-        applicationId "io.bluewallet.bluewallet"
+        applicationId "com.layertwolabs.bluewallet"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
+        versionCode System.getenv("BUILD_NUMBER")?.toInteger() ?: (int)(System.currentTimeMillis() / 1000)
         versionName "7.2.7"
         testBuildType System.getProperty('testBuildType', 'debug')
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -105,11 +105,26 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            def keystoreFile = file("${rootProject.projectDir}/../bluewallet-release-key.keystore")
+            if (keystoreFile.exists()) {
+                storeFile keystoreFile
+                storePassword System.getenv("KEYSTORE_PASSWORD") ?: ""
+                keyAlias "l2l dev"
+                keyPassword System.getenv("KEYSTORE_PASSWORD") ?: ""
+            }
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             proguardFile "${rootProject.projectDir}/../node_modules/detox/android/detox/proguard-rules-app.pro"
+            if (signingConfigs.release.storeFile != null && signingConfigs.release.storeFile.exists()) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 

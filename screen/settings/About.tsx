@@ -1,7 +1,7 @@
 import Clipboard from '@react-native-clipboard/clipboard';
 import React, { useCallback, useState } from 'react';
 import { ActionSheetIOS, Alert, Image, Linking, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { getApplicationName, getBuildNumber, getBundleId, getUniqueIdSync, getVersion, hasGmsSync } from 'react-native-device-info';
+import { getApplicationName, getBuildNumber, getBundleId, getUniqueIdSync, getVersion } from 'react-native-device-info';
 import Icon from '@react-native-vector-icons/fontawesome6';
 
 import A from '../../blue_modules/analytics';
@@ -9,7 +9,6 @@ import { BlueTextCentered } from '../../BlueComponents';
 import { HDSegwitBech32Wallet } from '../../class';
 import presentAlert from '../../components/Alert';
 import { BlueSpacing20 } from '../../components/BlueSpacing';
-import Button from '../../components/Button';
 import {
   SettingsCard,
   SettingsFlatList,
@@ -22,7 +21,7 @@ import { useTheme } from '../../components/themes';
 import { useSettings } from '../../hooks/context/useSettings';
 import { NetworkType } from '../../models/network';
 import { useExtendedNavigation } from '../../hooks/useExtendedNavigation';
-import loc, { formatStringAddTwoWhiteSpaces } from '../../loc';
+import loc from '../../loc';
 
 const branch = require('../../current-branch.json');
 
@@ -54,28 +53,12 @@ const About: React.FC = () => {
     navigate('Licensing');
   }, [navigate]);
 
-  const handleOnXPress = useCallback(() => {
-    Linking.openURL('https://x.com/bluewalletio');
-  }, []);
-
   const handleOnTelegramPress = useCallback(() => {
-    Linking.openURL('https://t.me/bluewallethat');
+    Linking.openURL('http://www.t.me/DcInsiders');
   }, []);
 
   const handleOnGithubPress = useCallback(() => {
-    Linking.openURL('https://github.com/BlueWallet/BlueWallet');
-  }, []);
-
-  const handleOnRatePress = useCallback(async () => {
-    try {
-      if (Platform.OS === 'ios') {
-        await Linking.openURL('https://itunes.apple.com/app/bluewallet-bitcoin-wallet/id1376878040');
-      } else {
-        await Linking.openURL('https://play.google.com/store/apps/details?id=io.bluewallet.bluewallet');
-      }
-    } catch (error: any) {
-      console.error('Rate app failed:', error.message);
-    }
+    Linking.openURL('https://github.com/layerTwo-Labs/bluewallet');
   }, []);
 
   const handleLogoPress = useCallback(() => {
@@ -153,27 +136,14 @@ const About: React.FC = () => {
                 <TouchableOpacity onPress={handleLogoPress} activeOpacity={1}>
                   <Image style={styles.logo} source={require('../../img/bluebeast.png')} />
                 </TouchableOpacity>
-                <Text style={[styles.textFree, { color: colors.foregroundColor }]}>{loc.settings.about_free}</Text>
-                <Text style={[styles.textBackup, { color: colors.alternativeTextColor }]}>
-                  {formatStringAddTwoWhiteSpaces(loc.settings.about_backup)}
+                <Text style={[styles.textFree, { color: colors.foregroundColor }]}>
+                  RedWallet is a Drivechain-enabled fork of BlueWallet. Credits to the BlueWallet team for making a great wallet.
                 </Text>
-                {((Platform.OS === 'android' && hasGmsSync()) || Platform.OS !== 'android') && (
-                  <View style={styles.headerButton}>
-                    <Button onPress={handleOnRatePress} title={loc.settings.about_review + ' ⭐🙏'} />
-                  </View>
-                )}
               </View>
             </SettingsCard>
           </SettingsSection>
         ),
         section: 1,
-      },
-      {
-        id: 'x',
-        title: '@bluewalletio',
-        leftIcon: <Text style={[styles.xIcon, { color: colors.foregroundColor }]}>𝕏</Text>,
-        onPress: handleOnXPress,
-        section: 2,
       },
       {
         id: 'telegram',
@@ -281,8 +251,6 @@ const About: React.FC = () => {
     colors.foregroundColor,
     colors.alternativeTextColor,
     handleLogoPress,
-    handleOnRatePress,
-    handleOnXPress,
     handleOnTelegramPress,
     handleOnGithubPress,
     handleOnReleaseNotesPress,
@@ -350,10 +318,6 @@ const styles = StyleSheet.create({
       marginVertical: 0,
     }),
   },
-  xIcon: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
   card: {
     marginVertical: 8,
   },
@@ -374,14 +338,6 @@ const styles = StyleSheet.create({
     marginTop: 16,
     fontSize: 16,
     textAlign: 'center',
-  },
-  textBackup: {
-    marginTop: 12,
-    fontSize: 14,
-    textAlign: 'center',
-  },
-  headerButton: {
-    marginTop: 16,
   },
   footerContainer: {
     marginTop: 16,

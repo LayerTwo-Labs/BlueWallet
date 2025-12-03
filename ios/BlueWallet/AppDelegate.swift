@@ -44,7 +44,7 @@ class AppDelegate: RCTAppDelegate, UNUserNotificationCenterDelegate {
       #endif
         }
 
-        self.moduleName = "BlueWallet"
+        self.moduleName = "RedWallet"
         self.dependencyProvider = RCTAppDependencyProvider()
         self.initialProps = [:]
 
@@ -306,7 +306,7 @@ class AppDelegate: RCTAppDelegate, UNUserNotificationCenterDelegate {
 
         userDefaultsGroup?.setValue(userActivityData, forKey: "onUserActivityOpen")
 
-        if ["io.bluewallet.bluewallet.receiveonchain", "io.bluewallet.bluewallet.xpub", "io.bluewallet.bluewallet.blockexplorer"].contains(activityType) {
+        if ["com.layertwolabs.bluewallet.receiveonchain", "com.layertwolabs.bluewallet.xpub", "com.layertwolabs.bluewallet.blockexplorer"].contains(activityType) {
           EventEmitter.shared().sendUserActivity(userActivityData)
             return true
         }

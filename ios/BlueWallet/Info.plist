@@ -4,14 +4,14 @@
 <dict>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>io.bluewallet.bluewallet.fetchTxsForWallet</string>
+		<string>com.layertwolabs.bluewallet.fetchTxsForWallet</string>
 	</array>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>BlueWallet</string>
+	<string>RedWallet</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -25,7 +25,7 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>io.bluewallet.psbt</string>
+				<string>com.layertwolabs.psbt</string>
 			</array>
 		</dict>
 		<dict>
@@ -54,7 +54,7 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>io.bluewallet.psbt.txn</string>
+				<string>com.layertwolabs.psbt.txn</string>
 			</array>
 		</dict>
 		<dict>
@@ -68,7 +68,7 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>io.bluewallet.backup</string>
+				<string>com.layertwolabs.backup</string>
 			</array>
 		</dict>
 		<dict>
@@ -82,7 +82,7 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>io.bluewallet.bwcosigner</string>
+				<string>com.layertwolabs.bwcosigner</string>
 			</array>
 		</dict>
 	</array>
@@ -192,8 +192,8 @@
 	<string>In order to import an image for scanning, we need your permission to access your photo library.</string>
 	<key>NSUserActivityTypes</key>
 	<array>
-		<string>io.bluewallet.bluewallet.receiveonchain</string>
-		<string>io.bluewallet.bluewallet.xpub</string>
+		<string>com.layertwolabs.bluewallet.receiveonchain</string>
+		<string>com.layertwolabs.bluewallet.xpub</string>
 	</array>
 	<key>RCTNewArchEnabled</key>
 	<true/>
@@ -256,7 +256,7 @@
 			<key>UTTypeDescription</key>
 			<string>Partially Signed Bitcoin Transaction</string>
 			<key>UTTypeIdentifier</key>
-			<string>io.bluewallet.psbt</string>
+			<string>com.layertwolabs.psbt</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -269,7 +269,7 @@
 			<key>UTTypeDescription</key>
 			<string>BW COSIGNER</string>
 			<key>UTTypeIdentifier</key>
-			<string>io.bluewallet.bwcosigner</string>
+			<string>com.layertwolabs.bwcosigner</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -286,7 +286,7 @@
 			<key>UTTypeDescription</key>
 			<string>Bitcoin Transaction</string>
 			<key>UTTypeIdentifier</key>
-			<string>io.bluewallet.psbt.txn</string>
+			<string>com.layertwolabs.psbt.txn</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -303,7 +303,7 @@
 			<key>UTTypeDescription</key>
 			<string>Electrum Backup</string>
 			<key>UTTypeIdentifier</key>
-			<string>io.bluewallet.backup</string>
+			<string>com.layertwolabs.backup</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -340,7 +340,7 @@
 		</dict>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>io.bluewallet.bluewallet</string>
+	<string>com.layertwolabs.bluewallet</string>
 	<key>bugsnag</key>
 	<dict>
 		<key>apiKey</key>
