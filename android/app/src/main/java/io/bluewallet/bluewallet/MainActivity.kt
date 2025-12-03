@@ -21,7 +21,7 @@ class MainActivity : ReactActivity() {
      * This is used to schedule rendering of the component.
      */
     override fun getMainComponentName(): String {
-        return "BlueWallet"
+        return "RedWallet"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +42,7 @@ class MainActivity : ReactActivity() {
     }
     
     private fun checkAndShowCacheClearedAlert() {
-        val sharedPref = getSharedPreferences("group.io.bluewallet.bluewallet", Context.MODE_PRIVATE)
+        val sharedPref = getSharedPreferences("group.com.layertwolabs.bluewallet", Context.MODE_PRIVATE)
         val shouldShowAlert = sharedPref.getBoolean("shouldShowCacheClearedAlert", false)
         
         if (shouldShowAlert) {

@@ -201,12 +201,6 @@ const WalletsAdd: React.FC = () => {
         subtitle: index2walletType[2].subtitle,
         menuState: selectedIndex === 2 && selectedWalletType === ButtonSelected.ONCHAIN,
       },
-      {
-        id: index2walletType[3].walletType,
-        text: index2walletType[3].text,
-        subtitle: index2walletType[3].subtitle,
-        menuState: selectedWalletType === ButtonSelected.OFFCHAIN,
-      },
     ];
 
     const walletAction: Action = {

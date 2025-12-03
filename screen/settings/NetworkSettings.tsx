@@ -11,16 +11,16 @@ const NetworkSettings: React.FC = () => {
     navigation.navigate('ElectrumSettings');
   };
 
-  const navigateToLightningSettings = () => {
-    navigation.navigate('LightningSettings');
-  };
-
   const navigateToBlockExplorerSettings = () => {
     navigation.navigate('SettingsBlockExplorer');
   };
 
   const navigateToNotificationSettings = () => {
     navigation.navigate('NotificationSettings');
+  };
+
+  const navigateToLightningSettings = () => {
+    navigation.navigate('LightningSettings');
   };
 
   return (

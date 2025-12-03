@@ -102,11 +102,10 @@ function getHardcodedPeersForNetwork(network: NetworkType): Peer[] {
         { host: 'mempool.space', ssl: 40002 },
       ];
     case 'signet':
-      return [
-        { host: 'signet-electrumx.wakiyamap.dev', ssl: 50002 },
-        { host: 'electrum.emzy.de', ssl: 53002 },
-        { host: 'mempool.space', ssl: 60602 },
-      ];
+      // For some reason SSL is not working here. SSL works via Sparrow, but
+      // this throws kCFStreamSSLPeerName with an error code indicating an
+      // internal SSL error
+      return [{ host: 'node.signet.drivechain.info', tcp: 50001 }];
     case 'mainnet':
     default:
       return hardcodedPeers;
@@ -131,7 +130,7 @@ let wasConnectedAtLeastOnce: boolean = false;
 let serverName: string | false = false;
 let disableBatching: boolean = false;
 let connectionAttempt: number = 0;
-let currentNetwork: NetworkType = 'mainnet';
+let currentNetwork: NetworkType = 'signet';
 let currentPeerIndex = hardcodedPeers.findIndex(peer => peer.host === defaultPeer.host && peer.ssl === defaultPeer.ssl);
 if (currentPeerIndex < 0) currentPeerIndex = 0;
 let latestBlock: { height: number; time: number } | { height: undefined; time: undefined } = { height: undefined, time: undefined };
@@ -321,7 +320,12 @@ export async function connectMain(network: NetworkType = 'mainnet'): Promise<voi
       serverName = ver[0];
       mainConnected = true;
       wasConnectedAtLeastOnce = true;
-      if (ver[0].startsWith('ElectrumPersonalServer') || ver[0].startsWith('electrs') || ver[0].startsWith('Fulcrum')) {
+      if (
+        ver[0].startsWith('ElectrumPersonalServer') ||
+        ver[0].startsWith('electrs') ||
+        ver[0].startsWith('mempool-electrs') ||
+        ver[0].startsWith('Fulcrum')
+      ) {
         disableBatching = true;
 
         // exeptions for versions:

@@ -85,7 +85,7 @@ class MainApplication : Application(), ReactApplication {
 
     override fun onCreate() {
         super.onCreate()
-        sharedPref = getSharedPreferences("group.io.bluewallet.bluewallet", Context.MODE_PRIVATE)
+        sharedPref = getSharedPreferences("group.com.layertwolabs.bluewallet", Context.MODE_PRIVATE)
         
         // Handle clearFilesOnLaunch before registering listeners
         clearFilesIfNeeded()

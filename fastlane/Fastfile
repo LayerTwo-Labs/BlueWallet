@@ -1,11 +1,7 @@
 # Define app identifiers once for reuse across lanes
 def app_identifiers
   [
-    "io.bluewallet.bluewallet",
-    "io.bluewallet.bluewallet.watch",
-    "io.bluewallet.bluewallet.watch.extension",
-    "io.bluewallet.bluewallet.Stickers",
-    "io.bluewallet.bluewallet.MarketWidget"
+    "com.layertwolabs.bluewallet"
   ]
 end
 
@@ -204,10 +200,17 @@ before_all do |lane, options|
     next
   end
 
+  # Skip App Store Connect auth for Android lanes
+  current_platform = lane_context[SharedValues::PLATFORM_NAME]
+  if current_platform == :android
+    UI.message("Skipping App Store Connect auth for Android lane")
+    next
+  end
+
   skip_auth_lanes = ['register_devices_from_txt', 'build_catalyst_app_lane', 'install_pods', 'clear_derived_data_lane']
   lane_name = lane.to_s
   should_skip_auth = skip_auth_lanes.any? { |skip_lane| lane_name == skip_lane || lane_name.end_with?(" #{skip_lane}") }
-  
+
   # Check if we need App Store Connect for this lane
   unless should_skip_auth
     begin
@@ -492,7 +495,7 @@ platform :ios do
       with_retry(3, "Fetching provisioning profile for #{app_identifier}") do
         UI.message("Fetching provisioning profile for #{app_identifier}...")
         match(
-          git_basic_authorization: ENV["GIT_ACCESS_TOKEN"],
+          git_basic_authorization: ENV["GIT_USERNAME"] ? Base64.strict_encode64("#{ENV["GIT_USERNAME"]}:#{ENV["GIT_ACCESS_TOKEN"]}") : ENV["GIT_ACCESS_TOKEN"],
           git_url: ENV["GIT_URL"],
           type: "appstore",
           clone_branch_directly: true,
@@ -958,7 +961,7 @@ platform :ios do
 
 
   upload_to_testflight(
-    api_key_path: "./appstore_api_key.json",
+    api_key_path: ENV["APPLE_API_KEY_PATH"] || "./appstore_api_key.json",
     ipa: ipa_path,
     skip_waiting_for_build_processing: true,
     changelog: changelog

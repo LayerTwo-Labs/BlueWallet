@@ -9,11 +9,7 @@ type(ENV["MATCH_TYPE"] || "appstore")
 
 # App identifiers for all BlueWallet apps
 app_identifier([
-  "io.bluewallet.bluewallet", 
-  "io.bluewallet.bluewallet.watch", 
-  "io.bluewallet.bluewallet.watch.extension", 
-  "io.bluewallet.bluewallet.Stickers", 
-  "io.bluewallet.bluewallet.MarketWidget"
+  "com.layertwolabs.bluewallet"
 ])
 
 # Your Apple Developer account email address
