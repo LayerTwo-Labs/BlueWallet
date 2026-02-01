@@ -211,11 +211,8 @@
   "settings": {
     "about": "O BlueWallet",
     "about_awesome": "Sestaveno s úžasnými",
-    "about_backup": "Vždy zálohujte své klíče!",
-    "about_free": "BlueWallet je bezplatný a open source projekt. Vytvořeno bitcoinery.",
     "about_license": "Licence MIT",
     "about_release_notes": "Poznámky k vydání",
-    "about_review": "Napište nám recenzi",
     "performance_score": "Skóre výkonu: {num}",
     "run_performance_test": "Otestovat výkon",
     "about_selftest": "Spustit autotest",

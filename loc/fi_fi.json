@@ -208,11 +208,8 @@
   "settings": {
     "about": "Tietoa",
     "about_awesome": "Loistavasti rakennettu",
-    "about_backup": "Varmuuskopioi aina avaimesi!",
-    "about_free": "BlueWallet on ilmainen ja avoimen lähdekoodin projekti. Bitcoin käyttäjien tekemä.",
     "about_license": "MIT-lisenssi",
     "about_release_notes": "Julkaisutiedot",
-    "about_review": "Jätä meille arvostelu",
     "performance_score": "Suorituskykypisteet: {num}",
     "run_performance_test": "Testin suorituskyky",
     "about_selftest": "Suorita itsetestaus",

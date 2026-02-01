@@ -166,11 +166,8 @@
   "settings": {
     "about": "Over",
     "about_awesome": "Gebouwt met de geweldige",
-    "about_backup": "Maak altijd een backup van uw sleutels!",
-    "about_free": "BlueWallet is een gratis en open-source project. Gemaakt door Bitcoin gebruikers.",
     "about_license": "MIT Licentie",
     "about_release_notes": "Release-opmerkingen",
-    "about_review": "Laat een review achter",
     "about_selftest": "Voer een zelftest uit",
     "about_selftest_electrum_disabled": "Het zelf testen is niet beschikbaar met Electrum offline modus. Zet alsjeblieft de offline modus uit en probeer het opnieuw.",
     "about_selftest_ok": "Alle interne tests zijn geslaagd. De wallet werkt.",

@@ -211,11 +211,8 @@
   "settings": {
     "about": "关于",
     "about_awesome": "由出色的技术打造",
-    "about_backup": "请务必备份您的密钥！",
-    "about_free": "BlueWallet 是一个自由且开源的项目，由比特币用户打造。",
     "about_license": "麻省理工学院许可证",
     "about_release_notes": "更新日志",
-    "about_review": "给我们写个评价",
     "performance_score": "性能评分：{num}",
     "run_performance_test": "测试性能",
     "about_selftest": "运行自检",

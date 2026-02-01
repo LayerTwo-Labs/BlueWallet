@@ -211,11 +211,8 @@
   "settings": {
     "about": "About",
     "about_awesome": "Built with the awesome",
-    "about_backup": "Always backup your keys!",
-    "about_free": "BlueWallet is a free and open-source project. Crafted by Bitcoin users.",
     "about_license": "MIT License",
     "about_release_notes": "Release notes",
-    "about_review": "Leave us a review",
     "performance_score": "Performance score: {num}",
     "run_performance_test": "Test performance",
     "about_selftest": "Run self-test",
@@ -685,7 +682,7 @@
     "notification_tx_unconfirmed": "Notification transaction is not confirmed yet, please wait",
     "failed_create_notif_tx": "Failed to create on-chain transaction",
     "onchain_tx_needed": "On-chain transaction needed",
-    "notif_tx_sent" : "Notification transaction sent. Please wait for it to confirm",
+    "notif_tx_sent": "Notification transaction sent. Please wait for it to confirm",
     "notif_tx": "Notification transaction",
     "not_found": "Payment code not found"
   }

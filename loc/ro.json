@@ -154,11 +154,8 @@
   "settings": {
     "about": "Despre",
     "about_awesome": "Construit cu minunatul",
-    "about_backup": "Întotdeauna salvează cheile de rezervă",
-    "about_free": "BlueWallet este un proiect gratuit și open source. Făurit de utilizatori Bitcoin.",
     "about_license": "Licență MIT",
     "about_release_notes": "Note de lansare",
-    "about_review": "Lasă o recenzie",
     "about_selftest": "Rulează auto-test",
     "about_selftest_ok": "Toate testele interne au trecut cu succes. Portofelul funcționează bine.",
     "about_sm_github": "GitHub",

@@ -172,11 +172,8 @@
   "settings": {
     "about": "درباره",
     "about_awesome": "ساخته‌شده با بهترین‌ها",
-    "about_backup": "همیشه از کلیدهای خود نسخهٔ پشتیبان تهیه کنید!",
-    "about_free": "برنامهٔ BlueWallet پروژه‌ای رایگان و متن‌باز است. ساخته‌شده توسط کاربران بیت‌کوین.",
     "about_license": "پروانهٔ ام‌آی‌تی",
     "about_release_notes": "یادداشت‌های انتشار",
-    "about_review": "برای ما یک بررسی بگذارید",
     "performance_score": "امتیاز کارکرد: {num}",
     "run_performance_test": "بررسی کارکرد",
     "about_selftest": "اجرای خودآزمایی",

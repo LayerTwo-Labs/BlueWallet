@@ -211,11 +211,8 @@
   "settings": {
     "about": "더 알아보기",
     "about_awesome": "제대로 만든",
-    "about_backup": "항상 키를 백업하세요!",
-    "about_free": "BlueWallet은 비트코인 이용자들이 만든 오픈 소스 프로젝트입니다. ",
     "about_license": "MIT 라이선스",
     "about_release_notes": "릴리즈 노트",
-    "about_review": "리뷰를 남겨주세요.",
     "performance_score": "성능 점수: {num}",
     "run_performance_test": "성능 테스트",
     "about_selftest": "자가 테스트",

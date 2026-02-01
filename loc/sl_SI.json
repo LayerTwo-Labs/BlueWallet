@@ -165,11 +165,8 @@
   "settings": {
     "about": "O aplikaciji",
     "about_awesome": "Zgrajeno z izjemnimi",
-    "about_backup": "Vedno naredite varnostno kopijo vaših ključev!",
-    "about_free": "BlueWallet je brezplačen in odprtokodni projekt. Ustvarili uporabniki Bitcoina.",
     "about_license": "Licenca MIT",
     "about_release_notes": "Opombe ob izdaji",
-    "about_review": "Ocenite, napišite mnenje",
     "about_selftest": "Zaženi samotestiranje",
     "about_selftest_electrum_disabled": "Samotestiranje ni na voljo v Electrum načinu brez povezave. Onemogočite način brez povezave in poskusite ponovno.",
     "about_selftest_ok": "Vsi opravljeni testi so bili uspešni. Denarnica deluje brez napak.",
