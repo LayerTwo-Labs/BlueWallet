@@ -194,10 +194,8 @@
   "settings": {
     "about": "زبار",
     "about_awesome": "ورکل وابیڌه وا بؽڌرینا",
-    "about_backup": "همیشه ز کیلیتا خوتۉݩ نوسخه لادرار بگیرین!",
     "about_license": "پروانه ام آی تی",
     "about_release_notes": "ویرداشتا انتشار",
-    "about_review": "سی ایما یه واجۊری بنین",
     "performance_score": "امتیاز کارکرد: {num}",
     "run_performance_test": "واجۊری کارکرد",
     "about_selftest": "ره وندن خوس آزمایی",

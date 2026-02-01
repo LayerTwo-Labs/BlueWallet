@@ -165,11 +165,8 @@
   "settings": {
     "about": "Sobre nosotros",
     "about_awesome": "Built with the awesome",
-    "about_backup": "¡Guarda siempre una copia de seguridad de tus llaves!",
-    "about_free": "BlueWallet es un proyecto de código abierto y gratuito. Elaborado por usuarios de Bitcoin.",
     "about_license": "Licencia MIT",
     "about_release_notes": "Notas de la versión",
-    "about_review": "Escribe una reseña",
     "about_selftest": "Iniciar test local",
     "about_selftest_electrum_disabled": "La autocomprobación no está disponible en el modo sin conexión de Electrum. Desactiva el modo sin conexión y vuelve a intentarlo. ",
     "about_selftest_ok": "Todas las pruebas internas han concluido satisfactoriamente. La billetera funciona bien. ",

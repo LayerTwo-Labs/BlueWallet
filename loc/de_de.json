@@ -211,11 +211,8 @@
   "settings": {
     "about": "Über",
     "about_awesome": "Entwickelt mt dem eindrucksvollen",
-    "about_backup": "Stets die Backup-Phrase sichern!",
-    "about_free": "BlueWallet ist kostenlose Open Source Software. Produziert von Bitcoin-Benutzern.",
     "about_license": "MIT-Lizenz",
     "about_release_notes": "Versionshinweise",
-    "about_review": "Bewertung hinterlassen",
     "performance_score": "Leistungskennzahl: {num}",
     "run_performance_test": "Leistung testen",
     "about_selftest": "Selbsttest ausführen",

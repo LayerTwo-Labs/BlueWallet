@@ -211,11 +211,8 @@
   "settings": {
     "about": "Acerca de",
     "about_awesome": "Construido con el impresionante",
-    "about_backup": "¡Siempre haz una copia de tus claves!",
-    "about_free": "BlueWallet es un proyecto libre y de código abierto. Elaborado por usuarios de Bitcoin.",
     "about_license": "Licencia MIT",
     "about_release_notes": "Notas de lanzamiento",
-    "about_review": "Déjanos un comentario",
     "performance_score": "Puntuación de rendimiento: {num}",
     "run_performance_test": "Prueba de rendimiento",
     "about_selftest": "Ejecutar auto-prueba",

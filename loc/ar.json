@@ -172,11 +172,8 @@
   "settings": {
     "about": "نبذة",
     "about_awesome": "تم تصميمها باستخدام الأدوات الرائعة التالية",
-    "about_backup": "احتفظ دائمًا بنسخة احتياطية من مفاتيحك!",
-    "about_free": "محفظة BlueWallet هي مشروع مجاني ومفتوح المصدر، أنشأه مستخدمو البتكوين.",
     "about_license": "ترخيص MIT",
     "about_release_notes": "معلومات الإصدار",
-    "about_review": "اترك لنا مراجعة",
     "performance_score": "معدل الأداء: {num}",
     "run_performance_test": "اختبار الأداء",
     "about_selftest": "تشغيل اختبار ذاتي",

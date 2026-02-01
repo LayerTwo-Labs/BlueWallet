@@ -149,9 +149,7 @@
   },
   "settings": {
     "about": "Sobre nosaltres",
-    "about_backup": "Feu sempre còpies de seguretat de les vostres claus!",
     "about_license": "Llicència MIT",
-    "about_review": "Deixa'ns una ressenya",
     "about_selftest": "Executa l'autotest",
     "about_sm_github": "GitHub",
     "about_sm_telegram": "Canal de Telegram",

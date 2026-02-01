@@ -161,11 +161,8 @@
   "settings": {
     "about": "Om",
     "about_awesome": "Bygget med det fantastiske",
-    "about_backup": "Sikkerhetskopier alltid nøklene dine!",
-    "about_free": "BlueWallet er et gratis og åpent kildekode-prosjekt. Laget av Bitcoin-brukere.",
     "about_license": "MIT License",
     "about_release_notes": "Versjonsmerknader",
-    "about_review": "Gi oss en anmeldelse",
     "about_selftest": "Kjør selvtest",
     "about_selftest_electrum_disabled": "Selvtesting er ikke tilgjengelig med Electrum Offline Mode. Deaktiver offline-modus og prøv igjen.",
     "about_selftest_ok": "Alle interne tester har bestått. Lommeboken fungerer bra.",

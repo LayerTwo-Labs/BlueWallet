@@ -164,11 +164,8 @@
   "settings": {
     "about": "Giới thiệu",
     "about_awesome": "được xây dựng với những điều tuyệt vời này",
-    "about_backup": "Luôn sao lưu các khóa của bạn!",
-    "about_free": "BlueWallet là dự án nguồn mở và tự do được tạo ra bởi người dùng Bitcoin.",
     "about_license": "Giấy phép MIT",
     "about_release_notes": "Ghi chú phát hành",
-    "about_review": "Để lại đánh giá",
     "performance_score": "Điểm hiệu suất: {num}",
     "run_performance_test": "Kiểm tra hiệu suất",
     "about_selftest": "Chạy tự kiểm tra",

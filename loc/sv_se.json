@@ -169,11 +169,8 @@
   "settings": {
     "about": "Om",
     "about_awesome": "Byggd med det fantastiska",
-    "about_backup": "Backa alltid upp dina nycklar!",
-    "about_free": "BlueWallet är gratis och byggs av bitcoin-användare med hjälp av öppen källkod.",
     "about_license": "MIT-licens",
     "about_release_notes": "Versionsinformation",
-    "about_review": "Lämna oss en recension",
     "performance_score": "Prestandapoäng: {num}",
     "run_performance_test": "Testa prestanda",
     "about_selftest": "Kör självtest",

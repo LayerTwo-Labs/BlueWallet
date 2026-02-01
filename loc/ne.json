@@ -163,10 +163,7 @@
   },
   "settings": {
     "about": "बारेमा",
-    "about_backup": "सधैं आफ्नो सांचो सेव गर्नुहोस !",
-    "about_free": "BlueWallet एक बिटकोइन प्रयोगकर्ताहरू द्वारा बनाईएको नि:शुल्क र खुला स्रोत परियोजना हो।",
     "about_release_notes": "नोटहरू जारी गर्नुहोस्",
-    "about_review": "हामीलाई एक विश्लेषण छोड्नुहोस्",
     "performance_score": "प्रदर्शन स्कोर: {num}",
     "run_performance_test": "परीक्षा प्रदर्शन",
     "about_selftest": "आत्म परीक्षण गर्नुहोस्",
