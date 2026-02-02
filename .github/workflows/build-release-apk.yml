@@ -82,9 +82,16 @@ jobs:
           echo "NEW_BUILD_NUMBER=$NEW_BUILD_NUMBER" >> $GITHUB_ENV
           echo "build_number=$NEW_BUILD_NUMBER" >> $GITHUB_OUTPUT
 
+<<<<<<< HEAD
       - name: Build and sign APK
         id: build_and_sign_apk
         run: bundle exec fastlane android build_release_apk
+=======
+      - name: Build release AAB
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/2025-12-03-redwallet'
+        id: build_release_aab
+        run: bundle exec fastlane android build_release_aab
+>>>>>>> 81bdf7f92 (ci: automatically upload android builds to Play Store internal testing)
         env:
           BUILD_NUMBER: ${{ steps.build_number.outputs.build_number }}
           KEYSTORE_FILE_HEX: ${{ secrets.KEYSTORE_FILE_HEX }}
@@ -103,8 +110,14 @@ jobs:
             android/**/reports/**/*.log
           if-no-files-found: warn
 
-      - name: Determine APK Filename and Path
-        id: determine_apk_path
+      - name: Build Debug APK (non-master branches)
+        if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/2025-12-03-redwallet'
+        run: |
+          cd android && ./gradlew assembleDebug --no-daemon
+
+      - name: Determine AAB Filename and Path
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/2025-12-03-redwallet'
+        id: determine_aab_path
         run: |
           BUILD_NUMBER=${{ steps.build_number.outputs.build_number }}
           VERSION_NAME=$(grep versionName android/app/build.gradle | awk '{print $2}' | tr -d '"')
@@ -112,20 +125,19 @@ jobs:
           BRANCH_NAME=$(echo "$BRANCH_NAME" | sed 's/[^a-zA-Z0-9_-]/_/g')
 
           if [ -n "$BRANCH_NAME" ] && [ "$BRANCH_NAME" != "master" ]; then
-            EXPECTED_FILENAME="BlueWallet-${VERSION_NAME}-${BUILD_NUMBER}-${BRANCH_NAME}.apk"
+            EXPECTED_FILENAME="BlueWallet-${VERSION_NAME}-${BUILD_NUMBER}-${BRANCH_NAME}.aab"
           else
-            EXPECTED_FILENAME="BlueWallet-${VERSION_NAME}-${BUILD_NUMBER}.apk"
+            EXPECTED_FILENAME="BlueWallet-${VERSION_NAME}-${BUILD_NUMBER}.aab"
           fi
-      
-          APK_PATH="android/app/build/outputs/apk/release/${EXPECTED_FILENAME}"
-          echo "EXPECTED_FILENAME=${EXPECTED_FILENAME}" >> $GITHUB_ENV
-          echo "APK_PATH=${APK_PATH}" >> $GITHUB_ENV
+          AAB_PATH="android/app/build/outputs/bundle/release/${EXPECTED_FILENAME}"
+          echo "AAB_PATH=${AAB_PATH}" >> $GITHUB_ENV
 
-      - name: Upload APK as artifact
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+      - name: Upload signed AAB as artifact
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/2025-12-03-redwallet'
+        uses: actions/upload-artifact@v4
         with:
-          name: signed-apk
-          path: ${{ env.APK_PATH }}
+          name: signed-aab
+          path: ${{ env.AAB_PATH }}
           if-no-files-found: error
 
   browserstack:
@@ -146,20 +158,54 @@ jobs:
       - name: Install dependencies with Bundler
         run: bundle install --jobs 4 --retry 3
 
-      - name: Download APK artifact
-        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+      - name: Download AAB artifact
+        uses: actions/download-artifact@v4
         with:
-          name: signed-apk
+          name: signed-aab
 
       - name: Set APK Path
         run: |
-          APK_PATH=$(find ${{ github.workspace }} -name '*.apk')
+          APK_PATH=$(find ${{ github.workspace }} -name '*.aab')
           echo "APK_PATH=$APK_PATH" >> $GITHUB_ENV
 
-      - name: Upload APK to BrowserStack and Post PR Comment
+      - name: Upload AAB to BrowserStack and Post PR Comment
         env:
           BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bundle exec fastlane upload_to_browserstack_and_comment
+
+  play-store-upload:
+    runs-on: ubuntu-latest
+    needs: buildReleaseApk
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/2025-12-03-redwallet')
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.6
+          bundler-cache: true
+
+      - name: Install dependencies with Bundler
+        run: bundle install --jobs 4 --retry 3
+
+      - name: Download AAB artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: signed-aab
+
+      - name: Set AAB Path
+        run: |
+          AAB_PATH=$(find ${{ github.workspace }} -name '*.aab')
+          echo "AAB_PATH=$AAB_PATH" >> $GITHUB_ENV
+
+      - name: Upload to Google Play Internal Testing
+        env:
+          GOOGLE_PLAY_JSON_KEY: ${{ secrets.GOOGLE_PLAY_JSON_KEY }}
+          AAB_PATH: ${{ env.AAB_PATH }}
+        run: bundle exec fastlane android deploy_to_play_store

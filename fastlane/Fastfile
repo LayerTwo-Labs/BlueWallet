@@ -310,6 +310,38 @@ platform :android do
     end
   end
 
+  desc "Upload AAB to Google Play internal/closed testing"
+  lane :deploy_to_play_store do
+    Dir.chdir(PROJECT_ROOT) do
+      aab_path = ENV['AAB_PATH']
+
+      if aab_path.nil? || aab_path.empty?
+        UI.message("No AAB path provided, searching for AAB...")
+        aab_path = Dir.glob(File.join(PROJECT_ROOT, "android/app/build/outputs/bundle/release/*.aab")).last
+        UI.user_error!("No AAB file found") if aab_path.nil? || aab_path.empty?
+      end
+
+      # Ensure absolute path
+      aab_path = File.expand_path(aab_path, PROJECT_ROOT) unless aab_path.start_with?('/')
+
+      UI.user_error!("AAB file not found at: #{aab_path}") unless File.exist?(aab_path)
+      UI.message("Uploading AAB to Play Store: #{aab_path}")
+
+      upload_to_play_store(
+        track: "internal",
+        aab: aab_path,
+        json_key_data: ENV['GOOGLE_PLAY_JSON_KEY'],
+        package_name: "com.layertwolabs.bluewallet",
+        skip_upload_metadata: true,
+        skip_upload_images: true,
+        skip_upload_screenshots: true,
+        skip_upload_changelogs: true
+      )
+
+      UI.success("Successfully uploaded AAB to Play Store internal track!")
+    end
+  end
+
   desc "Upload APK to BrowserStack and post result as PR comment"
   lane :upload_to_browserstack_and_comment do
     Dir.chdir(PROJECT_ROOT) do
