@@ -290,6 +290,38 @@ jobs:
         run: |
           bundle exec fastlane ios setup_provisioning_profiles
 
+      - name: Build App (unsigned, non-master)
+        if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/2025-12-03-redwallet'
+        run: |
+          cd ios && pod install
+          mkdir -p build_logs
+          xcodebuild -workspace BlueWallet.xcworkspace \
+            -scheme BlueWallet \
+            -configuration Release \
+            -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            build 2>&1 | tee build_logs/xcodebuild.log
+
+      - name: Upload unsigned app as artifact
+        if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/2025-12-03-redwallet'
+        uses: actions/upload-artifact@v4
+        with:
+          name: BlueWallet-unsigned-simulator
+          path: ios/build/Build/Products/Release-iphonesimulator/BlueWallet.app
+          retention-days: 7
+          if-no-files-found: error
+
+      - name: Upload build logs (non-master)
+        if: always() && github.ref != 'refs/heads/master' && github.ref != 'refs/heads/2025-12-03-redwallet'
+        uses: actions/upload-artifact@v4
+        with:
+          name: build_logs_pr
+          path: ios/build_logs/xcodebuild.log
+          retention-days: 7
+          if-no-files-found: error
+
       - name: Build App
         id: build_app
         run: |
@@ -435,6 +467,7 @@ jobs:
           name: build_logs
           path: ./ios/build_logs/
           retention-days: 7
+          if-no-files-found: warn
 
       - name: Verify IPA File Before Upload
         run: |
