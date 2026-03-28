@@ -58,6 +58,9 @@ jobs:
           yes | sdkmanager --licenses
           sdkmanager "platforms;android-36" "platform-tools" "build-tools;36.0.0" "ndk;27.1.12297006"
 
+      - name: Set default network
+        run: ./scripts/set-network.sh signet
+
       - name: Install node_modules (include dev deps for patch-package)
         run: npm ci --yes
 
