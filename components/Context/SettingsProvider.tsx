@@ -153,7 +153,7 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = React.m
   const [totalBalancePreferredUnit, setTotalBalancePreferredUnit] = useState<BitcoinUnit>(BitcoinUnit.BTC);
   const [selectedBlockExplorer, setSelectedBlockExplorer] = useState<BlockExplorer>(BLOCK_EXPLORERS.default);
   const [isElectrumDisabled, setIsElectrumDisabled] = useState<boolean>(true);
-  const [networkType, setNetworkType] = useState<NetworkType>('mainnet');
+  const [networkType, setNetworkType] = useState<NetworkType>(defaultSettingsContext.networkType);
   const [settingsLoaded, setSettingsLoaded] = useState<boolean>(false);
 
   const { walletsInitialized } = useStorage();
@@ -170,11 +170,12 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = React.m
         BlueElectrum.isDisabled().then(disabled => {
           setIsElectrumDisabled(disabled);
         }),
-        DefaultPreference.get(NETWORK_TYPE_KEY).then(network => {
-          if (network === 'testnet' || network === 'signet') {
-            setNetworkType(network);
-            setGlobalNetworkType(network);
-          }
+        DefaultPreference.get(NETWORK_TYPE_KEY).then(maybeNetwork => {
+          // Can be null if nothing is set
+          const network = (maybeNetwork as NetworkType) || defaultSettingsContext.networkType;
+          console.log(`[BlueWallet] Starting with network: ${network}`);
+          setNetworkType(network);
+          setGlobalNetworkType(network);
         }),
         getIsHandOffUseEnabled().then(handOff => {
           setIsHandOffUseEnabledState(handOff);

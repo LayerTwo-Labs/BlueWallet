@@ -74,6 +74,10 @@ jobs:
           ruby-version: 3.4.8
           bundler-cache: true
 
+      - name: Set default network
+        if: github.event_name == 'workflow_dispatch' || steps.labels.outputs.has_mac_dmg == 'true'
+        run: ./scripts/set-network.sh signet
+
       - name: Install Node modules
         if: github.event_name == 'workflow_dispatch' || steps.labels.outputs.has_mac_dmg == 'true'
         run: npm ci
