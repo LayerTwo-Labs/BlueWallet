@@ -85,16 +85,10 @@ jobs:
           echo "NEW_BUILD_NUMBER=$NEW_BUILD_NUMBER" >> $GITHUB_ENV
           echo "build_number=$NEW_BUILD_NUMBER" >> $GITHUB_OUTPUT
 
-<<<<<<< HEAD
-      - name: Build and sign APK
-        id: build_and_sign_apk
-        run: bundle exec fastlane android build_release_apk
-=======
       - name: Build release AAB
         if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/2025-12-03-redwallet'
         id: build_release_aab
         run: bundle exec fastlane android build_release_aab
->>>>>>> 81bdf7f92 (ci: automatically upload android builds to Play Store internal testing)
         env:
           BUILD_NUMBER: ${{ steps.build_number.outputs.build_number }}
           KEYSTORE_FILE_HEX: ${{ secrets.KEYSTORE_FILE_HEX }}
